@@ -3,12 +3,15 @@ class StarPainter {
         return [
             '--star-radius',
             '--time',
+            '--color',
         ]
     }
     paint(context, geometry, properties) {
         const radius = parseInt(properties.get('--star-radius').toString())
         const time = parseInt(properties.get('--time').toString())
         console.log(time)
+        const color = properties.get('--color').toString()
+        
         const stX = geometry.width / 2
         const stY = geometry.height / 2
         context.moveTo(stX, stY)
@@ -21,9 +24,12 @@ class StarPainter {
             const y = Math.sin(theta)*r + stY
             context.lineTo(x,y)
         }
-
+        context.shadowColor = 'black';
+        context.shadowBlur = 15;
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
         context.closePath()
-        context.fillStyle = 'aqua'
+        context.fillStyle = color
         context.fill()
     }
 }

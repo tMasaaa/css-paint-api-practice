@@ -1,0 +1,65 @@
+/* variable */
+:root {
+    --star-red: #F03578;
+    --star-circle-red: #F7B0C3;
+    --star-yellow: #FDE90B;
+    --star-green: #31E495;
+    --star-purple: #AC19C9;
+    --star-lightblue: #12DFFC;
+}
+
+/* style */
+body {
+    height: 100vh;
+}
+#root {
+    height: 100%;
+}
+.graphics {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    overflow: visible;
+    /* --star-radius: 200px; */
+    background-image: paint(star);
+    display: block;
+    /* background-color: aquamarine; */
+    animation: move 20s 0s infinite linear;
+}
+.graphics:nth-child(1) {
+    --color: var(--star-red);
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+}
+.graphics:nth-child(2) {
+    --color: var(--star-yellow);
+    top: calc(50% - 200px - 250px);
+    left: calc(50% + 200px - 250px);
+}
+.graphics:nth-child(3) {
+    --color: var(--star-green);
+    top: calc(50% + 200px - 250px);
+    left: calc(50% + 200px - 250px);
+}
+.graphics:nth-child(4) {
+    --color: var(--star-purple);
+    top: calc(50% + 200px - 250px);
+    left: calc(50% - 200px - 250px);
+}
+.graphics:nth-child(5) {
+    --color: var(--star-lightblue);
+    top: calc(50% - 200px - 250px);
+    left: calc(50% - 200px - 250px);
+}
+/* animation */
+@keyframes move {
+    0% {
+        --time: 0s;
+        --star-radius: 0px;
+    }
+
+    100% {
+        --time: 300s;
+        --star-radius: 1000px;
+    }
+}
