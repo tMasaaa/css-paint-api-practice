@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paint API</title>
+    <script>
+        CSS.paintWorklet.addModule('worklet.js')
+        CSS.registerProperty({
+            name: "--time", // 変数名
+            syntax: "<time>", // 型
+            inherits: false, // 継承の可否
+            initialValue: "0s" // 初期値
+        })
+        CSS.registerProperty({
+            name: "--star-radius", // 変数名
+            syntax: "<length>", // 型
+            inherits: false, // 継承の可否
+            initialValue: "200px" // 初期値
+        })
+    </script>
+    <style>
+        body {
+            height: 100vh;
+        }
+        .graphics {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            /* --star-radius: 200px; */
+            background-image: paint(star);
+            display: block;
+            /* background-color: aquamarine; */
+            animation: move 20s 0s infinite linear;
+        }
+
+        @keyframes move {
+            0% {
+                --time: 0s;
+                --star-radius: 0px;
+            }
+
+            100% {
+                --time: 300s;
+                --star-radius: 1000px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="graphics"></div>
+</body>
+
+</html>
